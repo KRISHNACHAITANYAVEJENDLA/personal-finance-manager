@@ -25,6 +25,7 @@ This project is a static website that demonstrates the frontend design for a Per
 ├── investment_manager.html // (Placeholder for Investment Manager page)
 ├── tax_management.html    // (Placeholder for Tax Management page)
 └── README.md
+
 🛠️ How to Run (Local Setup)
 Clone the repository (or download the files):
 
