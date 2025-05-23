@@ -47,7 +47,7 @@ Backend Development: Develop a robust backend (e.g., using Node.js, Python, Ruby
 Deployment: Deploy the application to a web server for public access.
 🧑‍💻 Meet the Team
 B. DHEERAJ
-KRISHNA CHAITANYA
+V. KRISHNA CHAITANYA
 N. CHARAN
 K. PAVAN KUMAR
 N. BHUVANESH
