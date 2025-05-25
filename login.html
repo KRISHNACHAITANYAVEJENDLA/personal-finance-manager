@@ -3,52 +3,86 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login Form without CAPTCHA</title>
+    <title>Login Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 2rem;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, #4b6cb7, #182848);
         }
-        form {
-            max-width: 300px;
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            display: block;
         }
         input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 8px;
+            width: 95%;
+            padding: 10px;
             margin: 6px 0 12px;
-            box-sizing: border-box;
-        }
-        #errorMessage {
-            color: red;
-            margin-bottom: 12px;
-            display: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
         }
         button {
-            padding: 10px 15px;
+            padding: 10px;
             background-color: #4285F4;
             color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            font-size: 16px;
         }
         button:hover {
             background-color: #357ae8;
+        }
+        .new-user {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .new-user a {
+            color: #4285F4;
+            text-decoration: none;
+        }
+        .new-user a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <h2>Login Form</h2>
+    <div class="form-container">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <div id="errorMessage"></div>
+            <label for="username">Email:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your email" required />
 
-    <form id="loginForm">
-        <div id="errorMessage"></div>
-        <label for="username">Email:</label><br />
-        <input type="text" id="username" name="username" placeholder="Enter your email" /><br />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required />
 
-        <label for="password">Password:</label><br />
-        <input type="password" id="password" name="password" placeholder="Enter your password" /><br />
-
-        <button type="submit">Login</button>
-    </form>
+            <button type="submit">Login</button>
+        </form>
+        <div class="new-user">
+            <p>New User? <a href="useraccountmanagement.html">Register here</a></p> </div>
+    </div>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -60,14 +94,9 @@
             errorMessageDiv.style.display = 'none';
             errorMessageDiv.textContent = '';
 
-            if (!username.includes('@') || password === '') {
-                errorMessageDiv.textContent = 'Invalid email/password.';
-                errorMessageDiv.style.display = 'block';
-                return;
-            }
-
-            const validEmail = 'user@gmail.com';
-            const validPassword = 'Test@1234';
+            // Check for specific username and password
+            const validEmail = 'user@example.com';
+            const validPassword = 'SecurePassword123';
 
             if (username !== validEmail || password !== validPassword) {
                 errorMessageDiv.textContent = 'Invalid username/password.';
@@ -76,7 +105,7 @@
             }
 
             // Redirect to dashboard page on success
-            window.location.href = 'dashboard.html';
+            window.location.href = 'dashboard.html'; // Ensure you have a dashboard.html file
         });
     </script>
 
