@@ -1,41 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Project Homepage</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Homepage with Contact</title>
+<style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      /* Colorful gradient background */
+      background: linear-gradient(to right, #ff7e5f, #feb47b, #86a8e7, #91eae4);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #4b6cb7, #182848);
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5em;
+      margin: 0.2em 0;
+      color: #fff;
+      text-shadow: 2px 2px 4px #00000050;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    nav ul li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
+    }
+    main {
+      padding: 20px;
+      /* Added a light background color to the main content area */
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    section {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
+    section h2, section h3 {
+      border-bottom: 2px solid #007BFF;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    a {
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #ffcc00;
+    }
+    button {
+      transition: background-color 0.3s ease;
+    }
+    .contact-info h2,
+    .map-container h2 {
+      color: #555;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    }
+    .contact-form button {
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .contact-form button:hover {
+      background-color: #0056b3;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .error {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+    iframe {
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: linear-gradient(to right, #4b6cb7, #182848);
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Our Project</h1>
-        <nav>
-            <ul>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="registration.html">Register</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+<h1>Personal Finance Manager</h1>
+<nav>
+<ul>
+<li><a href="#contact">Contact Us</a></li>
+<li><a href="login.html">Login</a></li> <!-- Updated link to point to login.html -->
+</ul>
+</nav>
+</header>
+<main class="container">
+<section class="project-info">
+<h2>About Our Project</h2>
+<p> </p>
+</section>
+<section class="finance-manager-info">
+<p>
+    A <strong>Personal Finance Manager</strong> is a digital tool designed to help individuals take control of their financial life.
+    It enables users to track income and expenses, create budgets, monitor investments, plan for future goals, and make smarter financial decisions all from a single platform.
+</p>
+<h3>💡 Key Features of Our AI-Based Personal Finance Manager</h3>
+<ul>
+<li><strong>Expense Tracking:</strong> Automatically categorize and track your spending across accounts.</li>
+<li><strong>Budget Creation &amp; Alerts:</strong> Set limits and get notified when you're close to overspending.</li>
+<li><strong>Smart Insights:</strong> AI-generated tips for saving more and spending smarter.</li>
+<li><strong>Goal Setting:</strong> Plan and track progress towards financial goals.</li>
+<li><strong>Investment Monitoring:</strong> Keep track of your investments and market trends.</li>
+<li><strong>Data Security:</strong> Bank-level encryption and secure login to protect your information.</li>
+</ul>
+<h3>🎯 Why Use a Personal Finance Manager?</h3>
+<ul>
+<li><strong>Improved Financial Awareness:</strong> Visualize your entire financial picture.</li>
+<li><strong>Better Decision-Making:</strong> Leverage AI insights for smarter financial planning.</li>
+<li><strong>Time-Saving:</strong> Automate tracking and analysis of your finances.</li>
+<li><strong>Stress Reduction:</strong> Stay organized and reduce financial anxiety.</li>
+</ul>
+<h3>👥 Who Should Use It?</h3>
+<p>
+    Anyone looking to manage their personal or household finances more effectively—whether it’s budgeting, saving, investing, or simply gaining better financial control.
+</p>
+</section>
 
-    <main>
-        <section class="project-info">
-            <h2>About Our Project</h2>
-            <p>This AI-powered personal finance manager is designed to help users manage their personal finances by tracking expenses, creating budgets, analyzing spending patterns, and providing useful insights for better financial decisions.</p>
-        </section>
-        <section class="team">
-            <h2>Meet the Team</h2>
-            <p>B. DHEERAJ</p>
-            <p>KRISHNA CHAITANYA</p>
-            <p>N. CHARAN</p>
-            <p>K. PAVAN KUMAR</p>
-            <p>N. BHUVANESH</p>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 AI Based Personal Finance Manager. All rights reserved.</p>
-    </footer>
+<section class="team">
+<h2>Meet the Team</h2>
+<p>B. DHEERAJ</p>
+<p>KRISHNA CHAITANYA</p>
+<p>N. CHARAN</p>
+<p>K. PAVAN KUMAR</p>
+<p>N. BHUVANESH</p>
+</section>
+<section id="contact">
+<h2>Contact Us</h2>
+<div class="contact-info">
+<h3>Get in Touch</h3>
+<p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+<p>Phone: <a href="tel:+1234567890">(123) 456-7890</a></p>
+<p>Address: VIT-AP University, G-30, Inavolu, Beside AP Secretariat, Amaravati, Andhra Pradesh 522237</p>
+</div>
+<div class="map-container">
+<h3>Our Location</h3>
+<iframe allowfullscreen="" height="300" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387140.5071462135!2d80.56464004760036!3d16.516732223512474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2b7b43f007bb7f%3A0xf7e5c3c7d3f3d64a!2sVIT-AP%20University%2C%20G-30%2C%20Inavolu%2C%20Beside%20AP%20Secretariat%2C%20Amaravati%2C%20Andhra%20Pradesh%20522237!5e0!3m2!1sen!2sin!4v1631031684211!5m2!1sen!2sin" width="100%">
+</iframe>
+</div>
+<form class="contact-form" id="contactForm">
+<label for="name">Name:</label>
+<input id="name" maxlength="35" name="name" required="" type="text"/>
+<label for="email">Email:</label>
+<input id="email" maxlength="35" name="email" required="" type="email"/>
+<label for="message">Message:</label>
+<textarea id="message" maxlength="50" name="message" required="" rows="5"></textarea>
+<button type="submit">Send Message</button>
+<div class="message" id="formMessage"></div>
+</form>
+</section>
+</main>
+<footer>
+<p>©️ 2024 AI Based Personal Finance Manager. All rights reserved.</p>
+</footer>
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const formMessage = document.getElementById('formMessage');
+      formMessage.textContent = '';
+      formMessage.className = 'message';
+      if (!name || !email || !message) {
+        formMessage.textContent = 'All fields are required.';
+        formMessage.className = 'message error';
+        return;
+      }
+      const namePattern = /^[a-zA-Z\s]+$/;
+      if (!namePattern.test(name)) {
+        formMessage.textContent = 'Name must contain only letters.';
+        formMessage.className = 'message error';
+        return;
+      }
+      const emailPattern = /^[^\s@]+@gmail\.com$/;
+      if (!emailPattern.test(email)) {
+        formMessage.textContent = 'Please enter a valid Email address ending with @gmail.com.';
+        formMessage.className = 'message error';
+        return;
+      }
+      formMessage.textContent = 'Message sent successfully!';
+      formMessage.className = 'message success';
+      document.getElementById('contactForm').reset();
+    });
+</script>
 </body>
 </html>
