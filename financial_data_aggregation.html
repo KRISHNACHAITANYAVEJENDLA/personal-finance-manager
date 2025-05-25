@@ -1,47 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Data Aggregation</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .form-container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; }
-        .form-container h2 { text-align: center; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; }
-        input[type="text"], input[type="password"], select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Net Worth Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center p-6">
 
-<div class="form-container">
-    <h2>Aggregate Financial Data</h2>
-    <form action="javascript:void(0);" method="post">
-        <div class="form-group">
-            <label for="bankAccount">Bank Account Number:</label>
-            <input type="text" id="bankAccount" name="bankAccount" required>
-        </div>
-        <div class="form-group">
-            <label for="creditCard">Credit Card Number:</label>
-            <input type="text" id="creditCard" name="creditCard" required>
-        </div>
-        <div class="form-group">
-            <label for="investmentAccount">Investment Account Number:</label>
-            <input type="text" id="investmentAccount" name="investmentAccount">
-        </div>
-        <div class="form-group">
-            <label for="dataSource">Choose Financial Data Source:</label>
-            <select id="dataSource" name="dataSource">
-                <option value="bank">Bank</option>
-                <option value="credit_card">Credit Card</option>
-                <option value="investment">Investment Account</option>
-            </select>
-        </div>
-        <button type="submit">Aggregate Data</button>
+  <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center mb-6 text-blue-600">Net Worth Calculator</h2>
+
+    <form id="accountForm" class="space-y-4">
+      <div>
+        <label for="accountType" class="block font-medium mb-1">Account Type</label>
+        <select id="accountType" class="w-full border border-gray-300 rounded-md p-2">
+          <option value="Checking">Checking</option>
+          <option value="Savings">Savings</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Investment">Investment</option>
+          <option value="Loan">Loan</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="initialBalance" class="block font-medium mb-1">Balance</label>
+        <input type="number" id="initialBalance" step="0.01" class="w-full border border-gray-300 rounded-md p-2" placeholder="e.g., 5000" required>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition">Add Account</button>
     </form>
-</div>
+
+    <div class="mt-6 text-center">
+      <p class="text-gray-700">Net Worth:</p>
+      <p id="netWorthDisplay" class="text-3xl font-bold text-blue-600 mt-2">$0.00</p>
+      <p class="text-sm text-gray-500 mt-1">Last updated: <span id="lastUpdated">N/A</span></p>
+    </div>
+  </div>
+
+  <script>
+    const accountForm = document.getElementById('accountForm');
+    const netWorthDisplay = document.getElementById('netWorthDisplay');
+    const lastUpdated = document.getElementById('lastUpdated');
+
+    const accounts = [];
+
+    accountForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const type = document.getElementById('accountType').value;
+      const balance = parseFloat(document.getElementById('initialBalance').value);
+
+      if (!isNaN(balance)) {
+        accounts.push({ type, balance });
+        updateNetWorth();
+        accountForm.reset();
+      } else {
+        alert('Please enter a valid balance.');
+      }
+    });
+
+    function updateNetWorth() {
+      let assets = 0;
+      let liabilities = 0;
+
+      accounts.forEach(account => {
+        if (['Credit Card', 'Loan'].includes(account.type)) {
+          liabilities += account.balance;
+        } else {
+          assets += account.balance;
+        }
+      });
+
+      const netWorth = assets - liabilities;
+      netWorthDisplay.textContent = `$${netWorth.toFixed(2)}`;
+      lastUpdated.textContent = new Date().toLocaleString();
+    }
+  </script>
 </body>
 </html>
