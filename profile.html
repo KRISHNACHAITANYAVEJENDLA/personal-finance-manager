@@ -1,0 +1,89 @@
+profile.html :-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+        }
+        .container {
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            text-align: center;
+            color: #555;
+        }
+        footer {
+            background-color: #eaeaea;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+    </header>
+
+    <div class="container">
+        <h2>Your Credentials</h2>
+        <p><strong>Username:</strong> user@example.com</p>
+        <h3>Services You Are Using:</h3>
+        <ul>
+            <li>Budget Tracker</li>
+            <li>Financial Aggregation</li>
+            <li>Investment Manager</li>
+            <li>Tax Management</li>
+        </ul>
+        <a href="dashboard.html" class="back-button">Back to Dashboard</a> 
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Personal Finance Manager. All rights reserved.</p>
+    </footer>
+</body>
+</html>
