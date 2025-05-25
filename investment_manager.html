@@ -1,48 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investment Management</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .form-container { max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; }
-        .form-container h2 { text-align: center; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; }
-        input[type="text"], select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        button { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Risk Predictor</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f7f6;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      max-width: 600px;
+      width: 90%;
+      padding: 2.5rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 1rem;
+      background-color: #ffffff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #2c3e50;
+      font-size: 1.875rem;
+      font-weight: 700;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #34495e;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #dcdcdc;
+      border-radius: 0.5rem;
+      box-sizing: border-box;
+      font-size: 1rem;
+      transition: border-color 0.2s ease-in-out;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+    button {
+      background-color: #2ecc71;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    }
+    button:hover {
+      background-color: #27ae60;
+      transform: translateY(-2px);
+    }
+    button:active {
+      transform: translateY(0);
+    }
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    .message-box {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+    .message-box.success {
+      background-color: #e6ffe6;
+      color: #28a745;
+      border: 1px solid #28a745;
+    }
+    .message-box.info {
+      background-color: #e0f7fa;
+      color: #007bff;
+      border: 1px solid #007bff;
+    }
+    .message-box.warning {
+      background-color: #fff3e0;
+      color: #ffc107;
+      border: 1px solid #ffc107;
+    }
+    .message-box.error {
+      background-color: #ffe6e6;
+      color: #dc3545;
+      border: 1px solid #dc3545;
+    }
+    .loading-spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+  <div class="form-container">
+    <h2>Stock Risk Predictor</h2>
+    <form id="investmentForm">
+      <div class="form-group">
+        <label for="stockSymbol">Stock Name or Symbol:</label>
+        <input type="text" id="stockSymbol" name="stockSymbol" required class="rounded-lg" placeholder="e.g., VODAFONE IDEA, RELIANCE" />
+      </div>
 
-<div class="form-container">
-    <h2>Investment Management</h2>
-    <form action="javascript:void(0);" method="post">
-        <div class="form-group">
-            <label for="investmentType">Investment Type:</label>
-            <select id="investmentType" name="investmentType">
-                <option value="stocks">Stocks</option>
-                <option value="bonds">Bonds</option>
-                <option value="mutual_funds">Mutual Funds</option>
-                <option value="real_estate">Real Estate</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="amount">Investment Amount:</label>
-            <input type="text" id="amount" name="amount" required>
-        </div>
-        <div class="form-group">
-            <label for="recommendations">Investment Recommendations:</label>
-            <select id="recommendations" name="recommendations">
-                <option value="low_risk">Low Risk</option>
-                <option value="medium_risk">Medium Risk</option>
-                <option value="high_risk">High Risk</option>
-            </select>
-        </div>
-        <button type="submit">Submit</button>
+      <div class="form-group">
+        <label for="amount">Investment Amount:</label>
+        <input type="text" id="amount" name="amount" required class="rounded-lg" placeholder="e.g., 10000" />
+      </div>
+
+      <button type="submit" class="rounded-lg" id="submitButton">
+        Predict Risk
+        <span id="loadingSpinner" class="loading-spinner" style="display: none;"></span>
+      </button>
     </form>
-</div>
+
+    <div id="messageBox" class="message-box"></div>
+
+    <script>
+      const investmentForm = document.getElementById('investmentForm');
+      const stockSymbolInput = document.getElementById('stockSymbol');
+      const amountInput = document.getElementById('amount');
+      const messageBox = document.getElementById('messageBox');
+      const submitButton = document.getElementById('submitButton');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+
+      function showMessage(message, type) {
+        messageBox.textContent = message;
+        messageBox.className = `message-box ${type}`;
+        messageBox.style.display = 'block';
+      }
+
+      function hideMessage() {
+        messageBox.style.display = 'none';
+        messageBox.textContent = '';
+        messageBox.className = 'message-box';
+      }
+
+      function showLoading() {
+        loadingSpinner.style.display = 'inline-block';
+        submitButton.disabled = true;
+        submitButton.textContent = 'Predicting...';
+        if (!submitButton.contains(loadingSpinner)) {
+          submitButton.appendChild(loadingSpinner);
+        }
+      }
+
+      function hideLoading() {
+        loadingSpinner.style.display = 'none';
+        submitButton.disabled = false;
+        submitButton.textContent = 'Predict Risk';
+      }
+
+      async function predictRisk(stockSymbol = '') {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        const normalizedSymbol = stockSymbol.toLowerCase().trim();
+        if (normalizedSymbol.includes('vodafone idea') || normalizedSymbol.includes('idea')) {
+          return 'High';
+        } else if (normalizedSymbol.includes('reliance')) {
+          return 'Medium';
+        } else if (normalizedSymbol.includes('infosys') || normalizedSymbol.includes('tcs') || normalizedSymbol.includes('hdfc')) {
+          return 'Low';
+        }
+        return 'Medium';
+      }
+
+      investmentForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        hideMessage();
+        showLoading();
+
+        const stockSymbol = stockSymbolInput.value;
+        const amount = parseFloat(amountInput.value);
+
+        if (!stockSymbol.trim()) {
+          showMessage('Please enter a stock symbol or name.', 'error');
+          hideLoading();
+          return;
+        }
+
+        if (isNaN(amount) || amount <= 0) {
+          showMessage('Please enter a valid investment amount.', 'error');
+          hideLoading();
+          return;
+        }
+
+        const predictedRisk = await predictRisk(stockSymbol);
+
+        showMessage(`Based on the stock "${stockSymbol}", the predicted risk level is: ${predictedRisk}.`, 'info');
+
+        hideLoading();
+
+        console.log('Stock Symbol:', stockSymbol);
+        console.log('Investment Amount:', amount);
+        console.log('Predicted Risk:', predictedRisk);
+      });
+    </script>
+  </div>
 </body>
 </html>
